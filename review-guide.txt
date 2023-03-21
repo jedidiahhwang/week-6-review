@@ -1,0 +1,98 @@
+WEEK 6 ASSESSMENT REVIEW
+
+This assessment review will cover the following topics...
+    1) QA and Testing
+    2) Automation
+    3) Deployment
+    4) DevOps and SRE (Site Reliability Engineering)
+
+This assessment will go over the following tasks...
+    1) Testing documentation
+    2) Writing Jest tests
+    3) Writing Selenium automated tests
+    4) What DevOps/SRE is and how Rollbar works in the SDLC
+
+
+TESTING DOCUMENTATION
+
+What are the three types of documentation we learned this week?
+    - Test Plan
+    - Test Case
+    - Bug Reports
+
+
+WRITING JEST TESTS
+
+What is Jest?
+    - It's a Javascript testing library for unit testing.
+
+What is a unit test?
+    - A test written for the simplest building block of our programs, i.e. a function.
+
+In your index.test.js, review the following material...
+    - What are the ways you can create test files?
+        1) You can use file.test.js
+        2) You can put js files in a __test__ folder
+
+    - A Jest unit test uses the following structure...
+
+        test("Check if the sum() function adds two numbers together", () => {
+            expect(sum(2, 2)).toBe(4);
+        })
+
+        1) We use the test keyword to indicate a new Jest test/function. This test/function takes a string and a callback function.
+            i. The string is used to describe what you're testing.
+                a. You can write anything you want here and it has no effect on the test itself (excluding description).
+                b. The callback function will contain the logic for the test.
+        2) The expect keyword takes any value, including function invocations (function invocations return values).
+        3) The second chained method is a matcher method that determines how you want to compare values.
+            i. See the following documentation for more matchers to use with expect(): https://jestjs.io/docs/expect
+        4) OPTIONAL: Show modifiers in conjunction with expect(). See above link for documentation.
+
+    - Run the test. You should get the error that no test was found.
+        1) In package.json, remember to change the script property to be "jest".
+        2) OPTIONAL: Briefly dive into what package.json is and what the script property does.
+
+    - A Jest describe block uses the following structure...
+
+        describe("Series of tests for checking the sum function" () => {
+            // WRITE TESTS HERE
+        })
+
+
+WRITING AUTOMATED TESTS
+
+Use the boilerplate code to guide the steps in setting up Selenium.
+
+    const { By, Builder, Browser, until, Key } = require("selenium-webdriver");
+
+    let driver;
+
+    // Build a new driver for each test
+    beforeEach(async () => {
+    driver = await new Builder().forBrowser(Browser.CHROME).build();
+    });
+
+    // Quit a driver after each test
+    afterEach(async () => {
+    await driver.quit();
+    });
+
+    describe("Test the Google homepage", () => {
+    test("can search Google for 'Selenium'", async () => {
+        // Navigate to google.com
+        await driver.get("https://www.google.com/");
+
+        // Locate the search bar and send the search term to it
+        await driver.findElement(By.name("q")).sendKeys("selenium", Key.RETURN);
+        // Wait until the title of the page changes to include the search term
+        await driver.wait(until.titleIs("selenium - Google Search"), 1000);
+    });
+    });
+
+We will be using CSS selectors to grab elements on the page.
+
+The three ways to use CSS selectors are...
+    1) tagName
+    2) .className
+    3) #id
