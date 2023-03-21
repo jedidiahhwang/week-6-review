@@ -20,6 +20,8 @@ What are the three types of documentation we learned this week?
     - Test Case
     - Bug Reports
 
+Remind students that this is the Trello board they worked on on Monday of Week 6 w/ Yoodilize.
+
 
 WRITING JEST TESTS
 
@@ -96,3 +98,12 @@ The three ways to use CSS selectors are...
     1) tagName
     2) .className
     3) #id
+
+You can also refer to the By class documentation from Selenium: https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/By.html
+
+
+DEVOPS AND SRE
+
+Since Rollbar is pretty copy and paste, I wouldn't spend too much time on this subject.
+
+One thing to review with students is where DevOps and SRE sits in the SDLC so students understand why it works and why we need it.
